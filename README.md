@@ -1,4 +1,4 @@
-# 🧑‍💻 **Your Name**
+# 🧑‍💻 **Thanh Hung**
 
 ![GitHub followers](https://img.shields.io/github/followers/nthung3?style=social)
 ![GitHub stars](https://img.shields.io/github/stars/nthung3?style=social)
