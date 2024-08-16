@@ -18,6 +18,12 @@ I am a skilled junior frontend developer with proficiency in HTML, CSS, and Java
 
 ![Your Name's GitHub Stats](https://github-readme-stats.vercel.app/api?username=nthung3&show_icons=true&theme=radical)
 
+## Top 5 most used languages across my repositories
+
+![TypeScript](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%233178c6&message=TypeScript%EF%B8%B142.3%25)
+![JavaScript](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%23f1e05a&message=JavaScript%EF%B8%B147.7%25)
+![Other](https://img.shields.io/static/v1?style=flat-square&label=%E2%A0%80&color=555&labelColor=%23ededed&message=Other%EF%B8%B110%25)
+
 ## 📫 **Contact Me**
 
 - **Email**: thanhhunq2k@gmail.com
