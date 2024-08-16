@@ -7,8 +7,7 @@ I am a skilled junior frontend developer with proficiency in HTML, CSS, and Java
 
 ## 🚀 **About Me**
 
-- 🎓 **Education**: B.Sc. in Computer Science from [Your University](https://www.youruniversity.edu)
-- 🏢 **Current Role**: Frontend Developer at [Your Company](https://www.yourcompany.com)
+- 🏢 **Current Role**: Frontend Developer
 - 💻 **Skills**: 
   - Languages: Typescript, JavaScript.
   - Frameworks: React, Nodejs, Express, Nextjs, etc.
