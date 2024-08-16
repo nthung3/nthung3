@@ -1,16 +1,28 @@
-## Hi there 👋
+# 🧑‍💻 **Your Name**
 
-<!--
-**nthung3/nthung3** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+![GitHub followers](https://img.shields.io/github/followers/nthung3?style=social)
+![GitHub stars](https://img.shields.io/github/stars/nthung3?style=social)
 
-Here are some ideas to get you started:
+I am a skilled junior frontend developer with proficiency in HTML, CSS, and JavaScript, as well as popular frontend frameworks like React. My goal is to further enhance my skills and knowledge to become a proficient senior frontend or fullstack developer. I actively seek opportunities to apply my problem-solving skills and contribute to real-world projects.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 🚀 **About Me**
+
+- 🎓 **Education**: B.Sc. in Computer Science from [Your University](https://www.youruniversity.edu)
+- 🏢 **Current Role**: Frontend Developer at [Your Company](https://www.yourcompany.com)
+- 💻 **Skills**: 
+  - Languages: Typescript, JavaScript.
+  - Frameworks: React, Nodejs, Express, Nextjs, etc.
+  - Tools: Git, Docker, Kubernetes, Github Actions, etc.
+
+
+## 📈 **GitHub Stats**
+
+![Your Name's GitHub Stats](https://github-readme-stats.vercel.app/api?username=nthung3&show_icons=true&theme=radical)
+
+## 📫 **Contact Me**
+
+- **Email**: thanhhunq2k@gmail.com
+- **LinkedIn**: [Your LinkedIn](https://www.linkedin.com/in/thanhhunq2k)
+- **Portfolio**: [Your Website](https://www.nthung.net)
+
+---
