@@ -22,7 +22,7 @@ I am a skilled junior frontend developer with proficiency in HTML, CSS, and Java
 ## 📫 **Contact Me**
 
 - **Email**: thanhhunq2k@gmail.com
-- **LinkedIn**: [Your LinkedIn](https://www.linkedin.com/in/thanhhunq2k)
-- **Portfolio**: [Your Website](https://www.nthung.net)
+- **LinkedIn**: [thanhhunq2k](https://www.linkedin.com/in/thanhhunq2k)
+- **Portfolio**: [nthung-portfolio](https://www.nthung.net)
 
 ---
