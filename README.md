@@ -14,9 +14,9 @@ I am a skilled junior frontend developer with proficiency in HTML, CSS, and Java
   - Tools: Git, Docker, Kubernetes, Github Actions, etc.
 
 
-## 📈 **GitHub Stats**
+## 📈 **DailyDevs**
 
-![Your Name's GitHub Stats](https://github-readme-stats.vercel.app/api?username=nthung3&show_icons=true&theme=radical)
+<img src="https://api.daily.dev/devcards/v2/rMiIXtNiik67s4RWuhlAz.png?r=8bq&type=wide" width="652" alt="The Bigger's Dev Card"/></a>
 
 ## Top 5 most used languages across my repositories
 
