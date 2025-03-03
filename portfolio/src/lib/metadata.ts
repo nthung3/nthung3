@@ -1,19 +1,9 @@
 // SEO Metadata Configuration
 import { Metadata } from "next";
 
-// Ensure URL has proper protocol
-const getSiteUrl = () => {
-  const url = process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-example.com';
-  // Make sure URL has protocol
-  if (!url.startsWith('http://') && !url.startsWith('https://')) {
-    return `https://${url}`;
-  }
-  return url;
-};
-
 // Default metadata for the entire site
 export const defaultMetadata: Metadata = {
-  metadataBase: new URL(getSiteUrl()),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio-example.com'),
   title: {
     default: "Thanh Hung | Frontend Developer",
     template: "%s | Thanh Hung",
@@ -43,7 +33,7 @@ export const defaultMetadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: getSiteUrl(),
+    url: "https://thanhhung.dev/",
     siteName: "Thanh Hung | Frontend Developer",
     title: "Thanh Hung | Frontend Developer",
     description: "Portfolio of Thanh Hung, a frontend developer specializing in React, Next.js, and modern web technologies.",
@@ -60,7 +50,8 @@ export const defaultMetadata: Metadata = {
     card: "summary_large_image",
     title: "Thanh Hung | Frontend Developer",
     description: "Portfolio of Thanh Hung, a frontend developer specializing in React, Next.js, and modern web technologies.",
-    images: ["/images/og-image.jpg"],
+    creator: "@yourtwitter", // Replace with your Twitter handle
+    images: ["/images/twitter-image.jpg"], // You'll need to create this image
   },
   robots: {
     index: true,
@@ -75,104 +66,79 @@ export const defaultMetadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico" }
     ],
-    shortcut: ["/favicon.ico"],
     apple: [
-      { url: "/apple-touch-icon.png" },
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
     ],
-  },
-  manifest: "/site.webmanifest",
-  verification: {
-    google: "google-site-verification-code", // Replace with your verification code if needed
-  },
-  alternates: {
-    canonical: "/",
-  },
-  category: "technology",
-  other: {
-    custom: "value",
+    other: [
+      {
+        rel: "manifest",
+        url: "/site.webmanifest",
+      }
+    ],
   },
 };
 
 // Generate metadata for blog posts
-export function generateBlogMetadata(post: any): Metadata {
-  const url = getSiteUrl();
+export const generateBlogMetadata = (post: any) => {
+  if (!post) return {};
   
   return {
     title: post.title,
     description: post.excerpt,
-    keywords: [...post.tags, "blog", "article"],
-    alternates: {
-      canonical: `${url}/blog/${post.slug}`,
-    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       type: "article",
-      publishedTime: post.publishedAt,
+      publishedTime: post.date,
       authors: ["Thanh Hung"],
       tags: post.tags,
-      images: [
-        {
-          url: post.coverImage || "/images/og-image.jpg",
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
     },
   };
-}
+};
 
 // Generate metadata for project pages
-export function generateProjectMetadata(project: any): Metadata {
-  const url = getSiteUrl();
+export const generateProjectMetadata = (project: any) => {
+  if (!project) return {};
   
   return {
     title: project.title,
-    description: project.summary,
-    alternates: {
-      canonical: `${url}/projects/${project.slug}`,
-    },
+    description: project.description,
     openGraph: {
       title: project.title,
-      description: project.summary,
+      description: project.description,
       type: "website",
-      images: [
-        {
-          url: project.image || "/images/og-image.jpg",
-          width: 1200,
-          height: 630,
-          alt: project.title,
-        },
-      ],
+      images: project.image ? [{ url: project.image }] : [],
     },
   };
-}
+};
 
 // Page-specific metadata
 export const pageMetadata = {
   home: {
     title: "Thanh Hung | Frontend Developer",
-    description: "Discover my portfolio of frontend development work, focusing on React, Next.js, and modern web technologies.",
+    description: "Welcome to my portfolio. I'm a frontend developer specializing in creating modern, responsive web applications.",
   },
   about: {
     title: "About Me | Thanh Hung",
-    description: "Learn about my journey as a frontend developer, my skills, and my approach to creating engaging web experiences.",
-  },
-  blog: {
-    title: "Blog | Thanh Hung",
-    description: "Articles and insights on frontend development, React, Next.js, and modern web technologies.",
+    description: "Learn more about my background, skills, and professional experience as a frontend developer.",
   },
   projects: {
     title: "Projects | Thanh Hung",
-    description: "Explore my latest frontend development projects using React, Next.js, and other modern web technologies.",
+    description: "Explore my portfolio of web development projects, featuring React, Next.js, and other modern technologies.",
+  },
+  blog: {
+    title: "Blog | Thanh Hung",
+    description: "Articles and tutorials about web development, frontend technologies, and design.",
   },
   contact: {
     title: "Contact | Thanh Hung",
-    description: "Get in touch with me for collaboration opportunities, project inquiries, or just to say hello.",
+    description: "Get in touch with me for collaboration, job opportunities, or just to say hello.",
   },
 };
