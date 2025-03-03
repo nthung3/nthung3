@@ -103,44 +103,11 @@ export const blogPosts = [
       
       "Finally, don't underestimate the power of TypeScript's built-in type inference. Often, explicit type annotations are unnecessary and can make code more verbose. Let TypeScript infer types where possible, and add explicit annotations only where necessary for clarity or where inference doesn't provide the precision you need. This balance results in code that's both type-safe and readable."
     ]
-  },
-  {
-    title: "Data Fetching and Caching in Next.js",
-    date: "December 15, 2024",
-    excerpt: "A comprehensive guide to data fetching patterns and caching strategies in Next.js applications.",
-    slug: "data-fetching-and-caching",
-    tags: ["Next.js", "Performance", "React"],
-    color: "!bg-neo-green",
-    textColor: "text-white",
-    content: [
-      "Next.js provides several powerful mechanisms for data fetching and caching that can significantly improve application performance. Understanding when and how to use each approach is crucial for building efficient web applications.",
-      
-      "With the App Router, Next.js introduces a simpler way to fetch data using async/await directly in your components. This approach leverages React's Suspense for handling loading states and provides a more intuitive programming model.",
-      
-      "For static data that doesn't change frequently, you can use the fetch API with the 'force-cache' option (the default in Next.js). This approach caches the data at build time and serves it from the cache for subsequent requests, resulting in extremely fast page loads.",
-      
-      "When dealing with data that changes periodically, Incremental Static Regeneration (ISR) is an excellent choice. By setting the 'next: { revalidate: seconds }' option in your fetch requests, you can specify how often Next.js should regenerate the page in the background while still serving the cached version to users.",
-      
-      "For truly dynamic data that must be fresh on every request, you can use the 'no-store' option with fetch. This is equivalent to the old getServerSideProps and ensures that data is fetched on each request without caching.",
-      
-      "Next.js also provides the React Cache function for deduplicating requests within a render pass. This is particularly useful when multiple components need the same data, as it prevents redundant fetches and improves performance.",
-      
-      "For client-side data fetching, SWR and TanStack Query (formerly React Query) are excellent libraries that work well with Next.js. They provide features like automatic revalidation, optimistic updates, and error handling that complement Next.js's server-side data fetching capabilities.",
-      
-      "The key to optimizing performance is choosing the right data fetching strategy for each piece of data in your application. By leveraging Next.js's built-in caching and combining it with client-side data fetching where appropriate, you can create applications that are both fast and dynamic."
-    ]
   }
 ];
 
-// Get all unique tags from blog posts
+// Helper function to get all tags from blog posts
 export function getAllTags() {
-  const tagsSet = new Set<string>();
-  
-  blogPosts.forEach(post => {
-    post.tags.forEach(tag => {
-      tagsSet.add(tag);
-    });
-  });
-  
-  return Array.from(tagsSet);
+  const allTags = blogPosts.flatMap(post => post.tags);
+  return [...new Set(allTags)]; // Remove duplicates
 }

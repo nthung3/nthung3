@@ -5,8 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:static": "node scripts/build-static.js",
-    "export:static": "node scripts/static-export.js",
     "start": "next start",
     "lint": "next lint"
   },

@@ -1,36 +1,41 @@
+"use server";
+
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
-import { blogPosts } from "@/lib/blog-data";
+
+import { getPost, getRelatedPosts, getAllBlogPosts } from "@/lib/notion/client";
+
 import BackButtonClient from "./back-button-client";
 import BlogPost from "./blog-post";
 
 // Generate static paths for all blog posts
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
+  const posts = await getAllBlogPosts();
+  
+  return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-// Post content data component
-function PostContentData({ slug }: { slug: string }) {
-  // For static export, use the local blog data
-  const post = blogPosts.find(post => post.slug === slug);
+// Post content data fetching server component
+async function PostContentData({ slug }: { slug: string }) {
+  const post = await getPost(slug);
   
   if (!post) {
-    notFound();
+    return <div>Post not found</div>;
   }
   
-  // Get posts with matching tags
-  const relatedPosts = blogPosts
-    .filter(p => p.slug !== slug && p.tags.some(tag => post.tags.includes(tag)))
-    .slice(0, 3);
+  // Fetch related posts based on tags
+  const relatedPosts = await getRelatedPosts(post.tags, slug);
   
   return <BlogPost post={post} relatedPosts={relatedPosts} />;
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  // First await params then access its properties
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   
   return (
     <main className="min-h-screen py-10">

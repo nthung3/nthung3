@@ -1,0 +1,46 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "installCommand": "npm install",
+  "devCommand": "npm run dev",
+  "images": {
+    "sizes": [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    "domains": ["*"],
+    "minimumCacheTTL": 60
+  },
+  "env": {
+    "NEXT_PUBLIC_SITE_URL": "https://nthung3.vercel.app"
+  },
+  "buildEnvironment": {
+    "NEXT_PUBLIC_SITE_URL": "https://nthung3.vercel.app"
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, s-maxage=60, stale-while-revalidate=120"
+        }
+      ]
+    },
+    {
+      "source": "/_next/image(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}
