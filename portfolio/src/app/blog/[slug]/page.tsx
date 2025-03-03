@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
-<<<<<<< HEAD
 import { blogPosts } from "@/lib/blog-data";
 import BackButtonClient from "./back-button-client";
 import BlogPost from "./blog-post";
@@ -17,17 +16,6 @@ export async function generateStaticParams() {
 function PostContentData({ slug }: { slug: string }) {
   // For static export, use the local blog data
   const post = blogPosts.find(post => post.slug === slug);
-=======
-
-import { getPost, getRelatedPosts } from "@/lib/notion/client";
-
-import BackButtonClient from "./back-button-client";
-import BlogPost from "./blog-post";
-
-// Post content data fetching server component
-async function PostContentData({ slug }: { slug: string }) {
-  const post = await getPost(slug);
->>>>>>> parent of 85a8176 (.)
   
   if (!post) {
     notFound();
