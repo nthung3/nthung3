@@ -1,13 +1,19 @@
 import { MetadataRoute } from 'next';
-import { blogPosts } from '@/lib/blog-data';
+import { getAllBlogPosts } from '@/lib/notion/client';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Add "force-static" option for static site generation
+=======
+// Force static generation for static export
+>>>>>>> parent of 85a8176 (.)
 export const dynamic = 'force-static';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thanhhung.dev'; // Replace with your actual domain
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Site URL from env variable or fallback
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thanhhung.dev';
 
+<<<<<<< HEAD
   // Generate blog post URLs
   const blogUrls = blogPosts.map(post => ({
     url: `${baseUrl}/blog/${post.slug}`,
@@ -52,16 +58,90 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
+=======
+  try {
+    // Get all blog posts
+    const posts = await getAllBlogPosts();
+    
+    // Generate blog post URLs
+    const blogUrls = posts.map(post => ({
+      url: `${baseUrl}/blog/${post.slug}/`,
+      lastModified: new Date(post.date || new Date()),
+>>>>>>> parent of 85a8176 (.)
       changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly' as const,
-      priority: 0.7,
-    },
-  ];
+      priority: 0.8,
+    }));
 
-  return [...routes, ...blogUrls];
+    // Static routes
+    const routes = [
+      {
+        url: baseUrl,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 1.0,
+      },
+      {
+        url: `${baseUrl}/about/`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/projects/`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/blog/`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.9,
+      },
+      {
+        url: `${baseUrl}/contact/`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      },
+    ];
+
+    return [...routes, ...blogUrls];
+  } catch (error) {
+    // Fallback to static routes only in case of error
+    console.error('Error generating dynamic sitemap:', error);
+    
+    return [
+      {
+        url: baseUrl,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 1.0,
+      },
+      {
+        url: `${baseUrl}/about/`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/projects/`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/blog/`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.9,
+      },
+      {
+        url: `${baseUrl}/contact/`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      },
+    ];
+  }
 }
