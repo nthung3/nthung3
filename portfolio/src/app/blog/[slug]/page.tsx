@@ -4,10 +4,19 @@ import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 
-import { getPost, getRelatedPosts } from "@/lib/notion/client";
+import { getPost, getRelatedPosts, getAllBlogPosts } from "@/lib/notion/client";
 
 import BackButtonClient from "./back-button-client";
 import BlogPost from "./blog-post";
+
+// Generate static paths for all blog posts
+export async function generateStaticParams() {
+  const posts = await getAllBlogPosts();
+  
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
 // Post content data fetching server component
 async function PostContentData({ slug }: { slug: string }) {

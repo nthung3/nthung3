@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getAllBlogPosts } from '@/lib/notion/client';
 import { REVALIDATE_TIME } from '@/lib/notion/config';
 
-// Force static generation
+// Add static export configuration
 export const dynamic = 'force-static';
 
 export async function GET() {
@@ -26,6 +26,3 @@ export async function GET() {
     );
   }
 }
-
-// Using the Node.js runtime for API routes
-export const runtime = 'nodejs';

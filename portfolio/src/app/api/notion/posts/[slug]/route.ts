@@ -2,23 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getBlogPostBySlug } from '@/lib/notion/client';
 import { REVALIDATE_TIME } from '@/lib/notion/config';
 
-// Force static generation
+// Add static export configuration
 export const dynamic = 'force-static';
 
 export async function GET(
   request: NextRequest,
   { params }: { params: { slug: string } }
 ) {
+  const slug = params.slug;
+
   try {
-    const { slug } = params;
-    
-    if (!slug) {
-      return NextResponse.json(
-        { error: 'Slug parameter is required' },
-        { status: 400 }
-      );
-    }
-    
     const post = await getBlogPostBySlug(slug);
     
     if (!post) {
@@ -38,13 +31,10 @@ export async function GET(
       }
     );
   } catch (error) {
-    console.error('Error fetching post:', error);
+    console.error(`Error fetching post with slug ${slug}:`, error);
     return NextResponse.json(
       { error: 'Failed to fetch blog post' },
       { status: 500 }
     );
   }
 }
-
-// Using the Node.js runtime for API routes
-export const runtime = 'nodejs';

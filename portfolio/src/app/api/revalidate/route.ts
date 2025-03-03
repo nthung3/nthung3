@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 
-// Force static generation for static export
+// Add static export configuration
 export const dynamic = 'force-static';
 
 export async function POST(request: NextRequest) {
@@ -45,6 +45,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-// Using the Node.js runtime for API routes
-export const runtime = 'nodejs';
