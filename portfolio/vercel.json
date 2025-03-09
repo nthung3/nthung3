@@ -11,9 +11,6 @@
   "env": {
     "NEXT_PUBLIC_SITE_URL": "https://nthung3.vercel.app"
   },
-  "buildEnvironment": {
-    "NEXT_PUBLIC_SITE_URL": "https://nthung3.vercel.app"
-  },
   "headers": [
     {
       "source": "/(.*)",
